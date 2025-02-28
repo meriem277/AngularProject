@@ -1,19 +1,28 @@
-<div class="residence-carousel">
+<div class="search-bar">
+  <input type="text" [(ngModel)]="searchText" placeholder="🔍 Rechercher par adresse..." />
+</div>
+
+<div class="favorites-section">
   <h2>🏠 Favoris</h2>
-  <ul>
+  <ul *ngIf="favoritesList.length > 0; else noFavorites">
     <li *ngFor="let fav of favoritesList">{{ fav.name }}</li>
   </ul>
+  <ng-template #noFavorites>
+    <p>Aucun favori pour l'instant.</p>
+  </ng-template>
+</div>
+
+<div class="residence-carousel">
   <!-- Flèche gauche -->
   <button class="arrow left" (click)="scrollLeft()">&#10094;</button>
-
-    </div>
 
   <!-- Wrapper des résidences -->
   <div class="residence-wrapper" #carousel>
     <div *ngFor="let residence of listResidences" class="residence-item">
+      <img [src]="residence.image" alt="{{ residence.name }}" />
       <h2>{{ residence.name }}</h2>
-      <p>
-        Status:
+
+      <p class="status">
         <ng-container [ngSwitch]="residence.status">
           <span *ngSwitchCase="'Disponible'" class="available">🟢 Disponible</span>
           <span *ngSwitchCase="'En Construction'" class="construction">🏗️ En Construction</span>
@@ -22,12 +31,13 @@
         </ng-container>
       </p>
 
-      <img [src]="residence.image" alt="{{ residence.name }}" />
-      <button (click)="showLocation(residence)">Show Location</button>
-      <button (click)="addToFavorites(residence)">❤️ Favoris</button>
-
+      <div class="actions">
+        <button class="btn location" (click)="showLocation(residence)">📍 Show Location</button>
+        <button class="btn favorite" (click)="addToFavorites(residence)">❤️ Favoris</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Flèche droite -->
   <button class="arrow right" (click)="scrollRight()">&#10095;</button>
-
 </div>

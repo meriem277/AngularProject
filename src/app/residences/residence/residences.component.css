@@ -103,3 +103,25 @@ button:hover {
 .arrow.right {
   right: 10px;
 }
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 2px solid #007bff; /* Bleu vif */
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+  background-color: #f0f8ff; /* Bleu très clair */
+  outline: none;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #007bff;
+}
+
+input:focus {
+  border-color: #0056b3; /* Bleu plus foncé */
+  box-shadow: 0 0 8px rgba(0, 91, 187, 0.5);
+  background-color: white;
+}
