@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module'; // Import du routing
 
 import { AppComponent } from './app.component';
-import { ResidencesComponent } from './residences/residence/residences.component';
+import { ResidencesComponent } from './residences/residences/residences.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -30,7 +32,9 @@ import { AddApartmentComponent } from './apartments/add-apartment/add-apartment.
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule,
+    RouterModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]

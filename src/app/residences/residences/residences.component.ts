@@ -47,4 +47,5 @@ export class ResidencesComponent implements OnInit {
       residence.address.toLowerCase().includes(this.searchText.toLowerCase())
     );
   }
+
 }
