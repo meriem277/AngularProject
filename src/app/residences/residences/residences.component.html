@@ -3,7 +3,7 @@
 </div>
 
 <div class="favorites-section">
-  <h2>🏠 Favoris</h2>
+  <h2>Favoris ❤️</h2>
   <ul *ngIf="favoritesList.length > 0; else noFavorites">
     <li *ngFor="let fav of favoritesList">{{ fav.name }}</li>
   </ul>
@@ -34,6 +34,9 @@
       <div class="actions">
         <button class="btn location" (click)="showLocation(residence)">📍 Show Location</button>
         <button class="btn favorite" (click)="addToFavorites(residence)">❤️ Favoris</button>
+        <button  routerLink="/residences/{{ residence.id }}">Détails</button>
+        <a [routerLink]="['/residences', residence.id, 'apartments']">Appartements list</a> <!-- Lien vers les appartements d'une résidence -->
+
       </div>
     </div>
   </div>

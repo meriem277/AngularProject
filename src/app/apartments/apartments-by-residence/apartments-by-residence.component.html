@@ -1,1 +1,16 @@
-<p>apartments-by-residence works!</p>
+
+<div class="apartments-list">
+  <h3>Liste des appartements</h3>
+
+  <button routerLink='AddApartment' class="create-apartment-btn">Créer un nouvel appartement</button>
+
+  <div *ngIf="apartments.length > 0">
+    <div *ngFor="let apartment of apartments">
+      <p>{{ apartment.name }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="apartments.length === 0">
+    <p>Aucun appartement trouvé.</p>
+  </div>
+</div>

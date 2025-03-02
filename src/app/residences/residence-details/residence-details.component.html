@@ -1,1 +1,21 @@
-<p>residence-details works!</p>
+<div class="residence-container">
+  <h2>Détails de la résidence</h2>
+
+  <div *ngIf="residence; else notFound" class="residence-card">
+    <img [src]="residence.image" alt="{{ residence.name }}" class="residence-image">
+    <div class="residence-info">
+      <h3>{{ residence.name }}</h3>
+      <p><strong>Adresse:</strong> {{ residence.address }}</p>
+      <p><strong>Status:</strong> <span [class]="getStatusClass(residence.status)">{{ residence.status }}</span></p>
+    </div>
+    <div class="button-container">
+      <button (click)="nextResidence()" class="next-button">Next</button>
+      <button routerLink="/add-residence" class="add-button">Add Residence</button>
+      <button routerLink="/add-residence" class="update-button">Update Residence</button>
+    </div>
+  </div>
+
+  <ng-template #notFound>
+    <p class="not-found">Résidence non trouvée.</p>
+  </ng-template>
+</div>

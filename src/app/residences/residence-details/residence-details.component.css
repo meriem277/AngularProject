@@ -1,0 +1,109 @@
+.residence-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.residence-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.residence-card:hover {
+  transform: translateY(-5px);
+}
+
+.residence-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.residence-info {
+  text-align: left;
+  width: 100%;
+  padding: 10px;
+}
+
+h3 {
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  color: #555;
+  margin: 5px 0;
+}
+
+span {
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Couleurs dynamiques pour le statut */
+.status-disponible {
+  color: #2ecc71;
+  background: #e9f7ef;
+}
+
+.status-vendu {
+  color: #e74c3c;
+  background: #fdecea;
+}
+
+.status-construction {
+  color: #f39c12;
+  background: #fef5e7;
+}
+
+.not-found {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+}
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.next-button,
+.add-button,
+.update-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: dodgerblue;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.next-button:hover,
+.add-button:hover,
+.update-button:hover {
+  background-color: deepskyblue;
+  transform: scale(1.05);
+}
+
+.next-button:active,
+.add-button:active,
+.update-button:active {
+  transform: scale(0.98);
+}

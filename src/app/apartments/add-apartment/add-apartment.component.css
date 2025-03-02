@@ -1,0 +1,98 @@
+.apartment-form-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 30px;
+  background: linear-gradient(to right, #007BFF, #0056b3);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  background: white;
+  color: #333;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-left: 4px solid #00d9ff;
+  box-shadow: 0 4px 12px rgba(0, 217, 255, 0.5);
+}
+
+.radio-group {
+  display: flex;
+  gap: 15px;
+}
+
+.radio-group label {
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error {
+  color: #ffeb3b;
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-btn, .reset-btn {
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.submit-btn {
+  background: #00aaff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn:hover {
+  background: #0091ea;
+  box-shadow: 0 6px 14px rgba(0, 145, 234, 0.5);
+}
+
+.reset-btn {
+  background: #ff5252;
+}
+
+.reset-btn:hover {
+  background: #e53935;
+}
