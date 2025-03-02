@@ -1,2 +1,65 @@
-<p>add-residence works!</p>
+<div class="residence-container">
+  <h2>Ajouter une Résidence</h2>
 
+  <form [formGroup]="residenceForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="id">
+
+    <label>Nom de la Résidence</label>
+    <input type="text" formControlName="name">
+    <p class="error" *ngIf="residenceForm.get('name')?.invalid && residenceForm.get('name')?.touched">
+      Nom requis (min 3 caractères)
+    </p>
+
+    <label>Adresse</label>
+    <input type="text" formControlName="address">
+    <p class="error" *ngIf="residenceForm.get('address')?.invalid && residenceForm.get('address')?.touched">
+      Adresse requise
+    </p>
+
+    <label>Image (URL)</label>
+    <input type="text" formControlName="image">
+    <p class="error" *ngIf="residenceForm.get('image')?.invalid && residenceForm.get('image')?.touched">
+      URL invalide
+    </p>
+
+    <label>Statut</label>
+    <select formControlName="status">
+      <option value="Disponible">Disponible</option>
+      <option value="En Construction">En Construction</option>
+      <option value="Vendu">Vendu</option>
+    </select>
+
+    <h3>Appartements</h3>
+    <div formArrayName="apartments">
+      <div *ngFor="let apartment of apartments.controls; let i = index" [formGroupName]="i">
+        <label>Numéro d'Appartement</label>
+        <input type="text" formControlName="apartmentNumber">
+
+        <label>Étage</label>
+        <input type="text" formControlName="floorNumber">
+
+        <label>Surface</label>
+        <input type="text" formControlName="surface">
+
+        <label>Terrasse</label>
+        <label><input type="radio" formControlName="terrace" value="yes" (change)="onTerraceChange(i, 'yes')"> Oui</label>
+        <label><input type="radio" formControlName="terrace" value="no" (change)="onTerraceChange(i, 'no')"> Non</label>
+
+        <label>Surface Terrasse</label>
+        <input type="text" formControlName="surfaceTerrace">
+
+        <label>Catégorie</label>
+        <select formControlName="category">
+          <option value="S+1">S+1</option>
+          <option value="S+2">S+2</option>
+          <option value="S+3">S+3</option>
+        </select>
+
+        <button type="button" (click)="removeApartment(i)">❌ Supprimer</button>
+      </div>
+    </div>
+
+    <button type="button" (click)="addApartment()">➕ Ajouter un Appartement</button>
+    <button type="submit" [disabled]="residenceForm.invalid">✅ Ajouter Résidence</button>
+  </form>
+</div>

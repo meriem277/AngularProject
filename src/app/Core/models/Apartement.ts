@@ -1,9 +1,9 @@
-export class Apartment {
-  apartNum!: number;
-  floorNum!: number;
-  surface!: number;
-  terrace!: boolean;
-  surfaceterrace!: number
-  category!: string;
-  ResidenceId!: number
+export interface Apartment {
+  apartmentNumber: number;
+  floorNumber: number;
+  surface: number;
+  terrace: string;
+  surfaceTerrace?: number;
+  category: string;
+  residence: number;
 }

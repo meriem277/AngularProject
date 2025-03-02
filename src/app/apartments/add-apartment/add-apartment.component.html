@@ -1,72 +1,52 @@
-<div class="apartment-form-container" [formGroup]="apartForm">
-  <h2>Ajouter un Appartement</h2>
+<form [formGroup]="apartForm" (ngSubmit)="onSubmit()" class="form-container">
+  <label>Apartment Number:</label>
+  <input type="text" formControlName="apartmentNumber">
+  <p class="error" *ngIf="apartForm.get('apartmentNumber')?.invalid && apartForm.get('apartmentNumber')?.touched">
+    Ce champ est requis et doit contenir uniquement des chiffres.
+  </p>
 
-  <div class="form-group">
-    <label for="apartmentNumber">Numéro d'Appartement</label>
-    <input id="apartmentNumber" type="text" formControlName="apartmentNumber" />
-    <p class="error" *ngIf="apartForm.get('apartmentNumber')?.invalid && apartForm.get('apartmentNumber')?.touched">
-      Ce champ est requis.
-    </p>
+  <label>Floor Number:</label>
+  <input type="text" formControlName="floorNumber">
+  <p class="error" *ngIf="apartForm.get('floorNumber')?.invalid && apartForm.get('floorNumber')?.touched">
+    Ce champ est requis et doit contenir uniquement des chiffres.
+  </p>
 
+  <label>Surface:</label>
+  <input type="text" formControlName="surface">
+  <p class="error" *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched">
+    Ce champ est requis.
+  </p>
+
+  <label>Terrace:</label>
+  <div>
+    <input type="radio" formControlName="terrace" (change)="onTerraceChange('yes')" value="yes"> Yes
+    <input type="radio" formControlName="terrace" (change)="onTerraceChange('no')" value="no"> No
   </div>
 
-  <div class="form-group">
-    <label for="floorNumber">Numéro d'Étage</label>
-    <input id="floorNumber" type="number" formControlName="floorNumber" />
-    <p class="error" *ngIf="apartForm.get('floorNumber')?.invalid && apartForm.get('floorNumber')?.touched">
-      Ce champ est requis.
-    </p>
-  </div>
+  <label>Surface Terrace:</label>
+  <input type="text" formControlName="surfaceTerrace" [disabled]="!terraceChecked">
+  <p class="error" *ngIf="apartForm.get('surfaceTerrace')?.invalid && apartForm.get('surfaceTerrace')?.touched">
+    Ce champ est requis si la terrasse est cochée "Yes".
+  </p>
 
-  <div class="form-group">
-    <label for="surface">Surface (m²)</label>
-    <input id="surface" type="number" formControlName="surface" />
-    <p class="error" *ngIf="apartForm.get('surface')?.invalid && apartForm.get('surface')?.touched">
-      Ce champ est requis.
-    </p>
+  <label>Category:</label>
+  <div>
+    <input type="radio" formControlName="category" value="S+1"> S+1
+    <input type="radio" formControlName="category" value="S+2"> S+2
+    <input type="radio" formControlName="category" value="S+3"> S+3
   </div>
+  <p class="error" *ngIf="apartForm.get('category')?.invalid && apartForm.get('category')?.touched">
+    Veuillez sélectionner une catégorie.
+  </p>
 
-  <div class="form-group">
-    <label>Terrasse</label>
-    <div class="radio-group">
-      <label>
-        <input type="radio" value="yes" formControlName="terrace" /> Oui
-      </label>
-      <label>
-        <input type="radio" value="no" formControlName="terrace" /> Non
-      </label>
-    </div>
-  </div>
-
-  <div class="form-group" *ngIf="apartForm.get('terrace')?.value === 'yes'">
-    <label for="surfaceTerrace">Surface Terrasse (m²)</label>
-    <input id="surfaceTerrace" type="number" formControlName="surfaceTerrace" />
-  </div>
-
-  <div class="form-group">
-    <label>Catégorie</label>
-    <div class="radio-group">
-      <label>
-        <input type="radio" value="S+1" formControlName="category" /> S+1
-      </label>
-      <label>
-        <input type="radio" value="S+2" formControlName="category" /> S+2
-      </label>
-      <label>
-        <input type="radio" value="S+3" formControlName="category" /> S+3
-      </label>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <label for="residence">Résidence</label>
-    <select id="residence" formControlName="residence">
-      <option *ngFor="let res of residences" [value]="res.id">{{ res.name }}</option>
-    </select>
-  </div>
+  <label>Residence ID:</label>
+  <input type="text" formControlName="residence">
+  <p class="error" *ngIf="apartForm.get('residence')?.invalid && apartForm.get('residence')?.touched">
+    Ce champ est requis.
+  </p>
 
   <div class="button-group">
-    <button type="button" class="submit-btn" (click)="addApartment()" [disabled]="apartForm.invalid">Ajouter</button>
-    <button type="button" class="reset-btn" (click)="resetForm()">Réinitialiser</button>
+    <button type="submit" [disabled]="apartForm.invalid" class="btn-submit">Add</button>
+    <button type="reset" (click)="apartForm.reset()" class="btn-reset">Reset</button>
   </div>
-</div>
+</form>
